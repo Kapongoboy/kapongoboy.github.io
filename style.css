@@ -12,7 +12,7 @@ html {
 
 h1 {
   font-size: 3rem;
-  color: #e2dbdb;
+  color: #B1B2FF;
 }
 
 hr {
@@ -21,6 +21,9 @@ hr {
   max-width: 65px;
 }
 
+a.navbar-brand {
+  color: white;
+}
 .buffer {
   height: 10rem;
 }
