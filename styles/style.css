@@ -1,0 +1,147 @@
+body {
+  background-color: white;
+  color: black;
+  font-family: Verdana;
+}
+
+#main {
+  max-width: 100%;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+h3 {
+  line-height: 1.25;
+  font-size: 0.8rem;
+}
+
+.text-small {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  padding: 0.2rem;
+}
+
+.genham {
+  max-width: 5%;
+  max-height: 5%;
+  width: 4%;
+  height: 4%;
+}
+
+@media (min-width: 720px ) {
+  #main {
+    width: 600px;
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    text-align: center;
+  }
+}
+
+@media (min-width: 960px){
+  #main {
+    width: 800px;
+  }
+}
+
+.world-of {
+  font-family: 'Sacramento', cursive;
+}
+
+/* .nav { */
+/*   display: flex; */
+/*   overflow: hidden; */
+/*   justify-content: space-between; */
+/*   align-items: center; */
+/*   padding: 1rem 2rem; */
+/*   margin-left: auto; */
+/*   margin-right: auto; */
+/*   position: fixed; */
+/*   bottom: 0; */
+/* } */
+.nav {
+    overflow: hidden;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 0;
+    padding: 1rem 2rem;
+    align-items: center;
+}
+
+.nav #navlinks {
+    justify-content: space-between;
+}
+
+.nav a {
+  float: left;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 1.2em;
+  display: block;
+}
+
+.nav a.icon {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.nav a:hover {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
+
+/* .nav .active { */
+/*   background-color: black; */
+/*   color: white; */
+/* } */
+/**/
+/* .nav .active:hover { */
+/*     background-color: white; */
+/*     color: black; */
+/* } */
+
+@media only screen and (min-width: 769px) {
+  .nav #navlinks {
+    display: block;
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .nav {
+    display: flex;
+    padding: 2rem 2rem;
+    right: 0;
+  }
+
+  .nav #navlinks {
+      display: none;
+  }
+
+
+  .nav a.icon {
+      display: block;
+  }
+}
