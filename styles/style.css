@@ -2,6 +2,14 @@ body {
   background-color: white;
   color: black;
   font-family: Verdana;
+  display: flex;
+  position: fixed;
+  text-rendering: optimizeLegibility;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
 }
 
 #main {
@@ -11,6 +19,7 @@ body {
   padding: 20px;
   font-size: 1.1rem;
   line-height: 1.5;
+  overflow: hidden;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -24,8 +33,9 @@ h3 {
 }
 
 .text-small {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-weight: bold;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 img {
@@ -35,10 +45,8 @@ img {
 }
 
 .genham {
-  max-width: 5%;
-  max-height: 5%;
-  width: 4%;
-  height: 4%;
+  width: 6rem;
+  height: 6rem;
 }
 
 @media (min-width: 720px ) {
@@ -73,15 +81,24 @@ img {
 /*   position: fixed; */
 /*   bottom: 0; */
 /* } */
+
+/* .nav { */
+/*     overflow: hidden; */
+/*     display: flex; */
+/*     margin-left: auto; */
+/*     margin-right: auto; */
+/*     position: fixed; */
+/*     top: 0; */
+/*     padding: 1rem 2rem; */
+/*     align-items: center; */
+/* } */
+
 .nav {
-    overflow: hidden;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    top: 0;
-    padding: 1rem 2rem;
-    align-items: center;
+  padding: 0.5rem;
+  min-height: 4rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .nav #navlinks {
@@ -107,8 +124,8 @@ img {
 }
 
 .nav a:hover {
-  background-color: black;
-  color: white;
+  background-color: #7469B6;
+  color: #FFE6E6;
   font-weight: bold;
 }
 
