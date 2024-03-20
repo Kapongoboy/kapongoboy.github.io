@@ -78,23 +78,19 @@ function loadAbout() {
       <div class="dark-back">
         <p class="text-small">
           Why am I here? I could ask you the same thing.
-          My answer is, it's all <a href='https://plainoldcheese.neocities.org'>his</a> fault.
           <br>
           <br>
           The truth is I don't particularly long for the halcyon days, if there ever was,
           of the internet or computing.
           Sure, there are the memories of playing Pinball for 8 hours straight on the family computer,
-          periodically interrupted by the neighborhoud trouble maker inviting me for a round
+          periodically interrupted by the neighborhood trouble maker inviting me for a round
           of <em>WWE</em>, or trying to woohoo in the sims 2 with my parents in the room without
           getting caught. And these memories, paltry as they are, are my treasures.
           <br>
           <br>
-          But unlike most dragons, Rawr XD.
-          <br>
-          <br>
           What was I talking about? Ah yes, I'm bad at web design and this is my excuse
           for why my site looks like it's straight out of the rejected page for the awwwards.
-          I was going to go on and on about how having the visual appetite of an Steve Jobs impersonator
+          I was going to go on and on about how having the visual appetite of a Steve Jobs impersonator
           isn't damning evidence pointing to my creative rigidity, but in the odd chance that you do want to know
           about me
         </p>
