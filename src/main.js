@@ -44,6 +44,7 @@ function loadNavListeners() {
     closeForMobile();
   });
 }
+
 function loadBlog() {
   const mainDiv = document.getElementById("main");
   const content = `
@@ -77,7 +78,7 @@ function loadAbout() {
       </div>
       <div class="dark-back">
         <p class="text-small">
-          Why am I here? I could ask you the same thing.
+          Why am I here? Why are you here, reading this now. I don't know but if you do, please share.
           <br>
           <br>
           The truth is I don't particularly long for the halcyon days, if there ever was,
@@ -88,6 +89,9 @@ function loadAbout() {
           getting caught. And these memories, paltry as they are, are my treasures.
           <br>
           <br>
+          Those were my good old days, what I mean when I say "kids these days can't understand", it's the sims on a computer with more viruses than frames per second.
+          <br>
+          <br>
           What was I talking about? Ah yes, I'm bad at web design and this is my excuse
           for why my site looks like it's straight out of the rejected page for the awwwards.
           I was going to go on and on about how having the visual appetite of a Steve Jobs impersonator
@@ -96,7 +100,7 @@ function loadAbout() {
         </p>
       </div>
       <div class="dark-back">
-        <h3>I am <em>allegedly</em> an adult man.</h3>
+        <h3>I am an adult man.</h3>
         <h3>Depending on who you ask, I am an artist, though I wouldn't claim to be a good one</h3>
         <h3>I've had the great misfortune of having studied electronic engineering. On the brightside I'm pretty good at python</h3>
         <h3>I lurk on most places on the internet, but you can reach me on discord @generalisinghamster</h3>
@@ -117,7 +121,6 @@ function loadShowcase() {
 }
 
 function main() {
-  let image = "";
   const body = document.getElementsByTagName("body")[0];
   const nav = document.querySelector(".nav a");
   const mainDiv = document.getElementById("main");
@@ -132,7 +135,7 @@ function main() {
     <div>
       <h1 class="world-of">World of</h1>
       <h1 class="gh-title">Plamedi Luis</h1>
-      <img src="./assets/${image}" alt="main picture">
+      <img src="./assets/sitesigh-cropped.webp" alt="main picture">
     </div>
 `;
   mainDiv.innerHTML = content;
