@@ -135,7 +135,7 @@ function main() {
     <div>
       <h1 class="world-of">World of</h1>
       <h1 class="gh-title">Plamedi Luis</h1>
-      <img src="./assets/sitesigh-cropped.webp" alt="main picture">
+      <img src="./assets/sitesigh-cropped.png" alt="main picture">
     </div>
 `;
   mainDiv.innerHTML = content;
