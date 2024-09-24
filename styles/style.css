@@ -1,6 +1,6 @@
 body {
-  background-color: white;
-  color: black;
+  background-color: #52552a;
+  color: white;
   font-family: Verdana;
   display: flex;
   text-rendering: optimizeLegibility;
@@ -44,8 +44,8 @@ img {
 }
 
 .genham {
-  width: 6rem;
-  height: 6rem;
+  width: 2rem;
+  height: 2rem;
 }
 
 @media (min-width: 720px ) {
@@ -106,7 +106,7 @@ img {
 
 .nav a {
   float: left;
-  color: black;
+  color: white;
   font-weight: bold;
   text-align: center;
   padding: 14px 16px;
@@ -123,8 +123,8 @@ img {
 }
 
 .nav a:hover {
-  background-color: #7469B6;
-  color: #FFE6E6;
+  background-color: #331716;
+  color: #e75a0b;
   font-weight: bold;
 }
 
