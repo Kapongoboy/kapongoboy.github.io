@@ -128,15 +128,19 @@ img {
   font-weight: bold;
 }
 
-/* .nav .active { */
-/*   background-color: black; */
-/*   color: white; */
-/* } */
-/**/
-/* .nav .active:hover { */
-/*     background-color: white; */
-/*     color: black; */
-/* } */
+.sous {
+  position: fixed;
+  width: 90%;
+  margin: 0 auto;
+  bottom: 0; /* Distance from the bottom */
+  left: 0;   /* Optional: Align to the left */
+  width: 100%; /* Optional: Full-width div */
+  padding: 10px; /* Optional: Padding inside the div */
+}
+
+.sous h2 {
+  text-align: center; /* Optional: Center-align text */
+}
 
 @media only screen and (min-width: 769px) {
   .nav #navlinks {
