@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: #52552a;
   color: white;
@@ -9,6 +15,11 @@ body {
   width: 100%;
   margin: 0px;
   padding: 0px;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 #main {
