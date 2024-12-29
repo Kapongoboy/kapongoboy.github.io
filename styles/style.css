@@ -183,7 +183,7 @@ article {
 }
 
 article:hover {
-    background-color: #4e1d18;
+    background-color: #2d4326;
     border-left: 4px solid #7b6953;
 }
 
@@ -206,6 +206,10 @@ article {
     cursor: pointer;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+article a {
+  color: #e75a0b;
 }
 
 html {
