@@ -52,20 +52,9 @@ function initializeCinematicSubtitles() {
     hours = hours ? hours : 12; // the hour '0' should be '12'
     const timeString = `${hours}:${minutes} ${ampm}`;
 
-    let stageDirection = "";
-    const activeHour = now.getHours();
-
-    if (activeHour >= 6 && activeHour < 12) {
-      stageDirection = "A room filled with the smell of chicorée. The morning light is flat, institutional, and grey. We sit in silence.";
-    } else if (activeHour >= 12 && activeHour < 18) {
-      stageDirection = "Sun-drenched dust motes float through the warm afternoon air. The compiler hums a quiet, lazy song. The engine is warm.";
-    } else {
-      stageDirection = "Nocturnal silence. Saturated neon reflections shimmer on the wet asphalt outside. A heart beats, too loud, too fast.";
-    }
-
     subtitleContainer.innerHTML = `
-      "${stageDirection}"
-      <span class="subtitle-text">[ ${timeString} — The page is loaded, though neither of us knows why. ]</span>
+      "Subdue the regret. Dust yourself off, proceed. You'll get it in the next life, where you don't make mistakes. Do what you can with this one, while you're alive."
+      <span class="subtitle-text">[ ${timeString} — τοῦ λόγου δ’ ἐόντος ξυνοῦ ζώουσιν οἱ πολλοὶ ὡς ἰδίαν ἔχοντες φρόνησιν ]</span>
     `;
   }
 
