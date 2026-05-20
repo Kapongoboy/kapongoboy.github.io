@@ -1,290 +1,763 @@
-* {
-  box-sizing: border-box;
+/* ==========================================================================
+   THEMATIC CINEMATIC DESIGN SYSTEM (Styles Integration)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Sacramento&display=swap');
+
+:root, body.theme-day {
+  /* Soft 35mm Portra 400 Warmth (A24 / Past Lives) */
+  --color-bg: #FAF6F0;
+  --color-text-dark: #1C1E21;
+  --color-text-body: #34373C;
+  --color-accent: #D98324;
+  --color-accent-dim: #F2EBE1;
+  --color-border: #21301B;
+  --color-border-soft: rgba(33, 48, 27, 0.15);
+  --color-glow: rgba(217, 131, 36, 0.04);
+  --filter-img: sepia(0.08) contrast(1.02);
+  --font-serif: 'Cormorant Garamond', 'Lora', serif;
+  --font-mono: 'DM Mono', 'JetBrains Mono', 'Courier New', monospace;
+  --letterbox-bg: #0D0E10;
+  --grain-opacity: 0.06;
 }
 
-body {
-  background-color: white;
-  color: black;
-  font-family: Verdana;
-  display: flex;
-  text-rendering: optimizeLegibility;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
+body.theme-morning {
+  /* Clinical Deadpan (Yorgos Lanthimos) */
+  --color-bg: #D5D0C3;
+  --color-text-dark: #111111;
+  --color-text-body: #2C2E2A;
+  --color-accent: #5F6B5A;
+  --color-accent-dim: #C5BFB2;
+  --color-border: #111111;
+  --color-border-soft: rgba(17, 17, 17, 0.35);
+  --color-glow: transparent;
+  --filter-img: grayscale(0.4) contrast(1.1) brightness(0.95);
+  --font-serif: 'Cormorant Garamond', 'Lora', serif;
+  --font-mono: 'DM Mono', 'JetBrains Mono', 'Courier New', monospace;
+  --letterbox-bg: #1A1A1A;
+  --grain-opacity: 0.04;
+}
+
+body.theme-night {
+  /* Nocturnal Neon-Noir (Wong Kar-wai) */
+  --color-bg: #060F0C;
+  --color-text-dark: #F3A83B;
+  --color-text-body: #96A89F;
+  --color-accent: #C21830;
+  --color-accent-dim: #10261F;
+  --color-border: #1B3C31;
+  --color-border-soft: rgba(194, 24, 48, 0.25);
+  --color-glow: rgba(194, 24, 48, 0.12);
+  --filter-img: saturate(1.3) hue-rotate(-5deg) contrast(1.08) brightness(0.9);
+  --font-serif: 'Cormorant Garamond', 'Lora', serif;
+  --font-mono: 'DM Mono', 'JetBrains Mono', 'Courier New', monospace;
+  --letterbox-bg: #030806;
+  --grain-opacity: 0.08;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html, body {
   max-width: 100%;
   overflow-x: hidden;
+  height: 100%;
 }
 
-#main {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 1rem;
-  font-size: 1.1rem;
-  font-weight: 500;
-  line-height: 1.5;
-  overflow: hidden;
-  font-family: 'Inter', sans-serif;
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-body);
+  font-family: var(--font-mono);
+  display: flex;
+  text-rendering: optimizeLegibility;
+  flex-direction: column;
+  margin: 0px;
+  padding: 4vh 0; /* Letterbox spacing */
+  transition: background-color 1.5s cubic-bezier(0.25, 1, 0.5, 1), 
+              color 1.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-#main .cen-pi {
-  position: absolute;
+/* ==========================================================================
+   OPTICAL EFFECTS (Film Grain, Widescreen Letterbox, Focus-Pull)
+   ========================================================================== */
+
+/* Dynamic Letterboxes on Desktop */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 4vh;
+  background: var(--letterbox-bg);
+  z-index: 10000;
+  pointer-events: none;
+  transition: background-color 1.5s cubic-bezier(0.25, 1, 0.5, 1), 
+              height 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body::before { top: 0; }
+body::after { bottom: 0; }
+
+@media only screen and (max-width: 768px) {
+  body::before, body::after {
+    height: 0;
+  }
+  body {
+    padding: 0;
+  }
+}
+
+/* GPU-Accelerated SVG Film Grain */
+.film-grain-overlay {
+  position: fixed;
   top: 0;
   left: 0;
-  max-width: 100%;
-  max-height: 100%;
-  z-index: -1;
-  opacity: 1.0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: overlay;
+  transition: opacity 1.5s ease;
 }
 
+.film-grain-overlay::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200%;
+  background: transparent;
+  filter: url(#film-grain);
+  animation: grain-animation 8s steps(10) infinite;
+}
+
+@keyframes grain-animation {
+  0%, 100% { transform:translate(0, 0); }
+  10% { transform:translate(-1%, -1%); }
+  20% { transform:translate(-2%, 1%); }
+  30% { transform:translate(1%, -2%); }
+  40% { transform:translate(-1%, 3%); }
+  50% { transform:translate(-2%, 1%); }
+  60% { transform:translate(3%, -1%); }
+  70% { transform:translate(2%, 1%); }
+  80% { transform:translate(-3%, -2%); }
+  90% { transform:translate(1%, 2%); }
+}
+
+/* Sibling focus blur (Depth of Field) */
+.focus-pull-container {
+  transition: filter 0.5s ease;
+}
+
+.focus-pull-container:hover .project-card:not(:hover),
+.focus-pull-container:hover article:not(:hover) {
+  filter: blur(3px) grayscale(40%) contrast(90%);
+  opacity: 0.45;
+  transform: scale(0.985);
+}
+
+/* Step Printing Animation */
+@keyframes step-print-in {
+  0% {
+    filter: blur(10px) contrast(140%);
+    opacity: 0;
+    transform: scale(0.97) translateY(6px);
+  }
+  25% {
+    filter: blur(6px) contrast(120%);
+    opacity: 0.35;
+  }
+  50% {
+    filter: blur(3px) contrast(110%);
+    opacity: 0.7;
+  }
+  75% {
+    filter: blur(1.5px) contrast(105%);
+    opacity: 0.95;
+  }
+  100% {
+    filter: blur(0px) contrast(100%);
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.step-print-active {
+  animation: step-print-in 0.5s steps(5) forwards;
+}
+
+/* ==========================================================================
+   LAYOUT STRUCTURE
+   ========================================================================== */
+
+#main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  font-family: var(--font-mono);
+}
+
+@media (min-width: 720px) {
+  #main {
+    max-width: 780px;
+  }
+}
+
+@media (min-width: 1024px) {
+  #main {
+    max-width: 880px;
+  }
+}
+
+/* Typographic Elements */
 h1, h2 {
-  font-family: 'Lora', serif;
+  font-family: var(--font-serif);
   text-align: center;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+  transition: color 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 1.7rem;
+  margin-top: 2rem;
 }
 
 h3 {
-  line-height: 1.25;
-  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  line-height: 1.4;
+  font-size: 0.9rem;
+  color: var(--color-text-dark);
 }
 
 .text-small {
-  font-weight: bold;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
 }
 
+/* Images */
 img {
   max-width: 100%;
   height: auto;
   padding: 0.2rem;
+  transition: filter 1.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .genham {
-  width: 2rem;
-  height: 2rem;
+  width: 2.2rem;
+  height: 2.2rem;
 }
 
-@media (min-width: 720px ) {
-  #main {
-    width: 600px;
-    font-size: 1.3rem;
-  }
-
-  h3 {
-    text-align: center;
-  }
+/* Main picture vintage photographic grading */
+#main .cen-pi {
+  display: block;
+  margin: 2rem auto;
+  max-width: 480px;
+  width: 100%;
+  border: 1px solid var(--color-border-soft);
+  padding: 8px;
+  background: #FFF;
+  box-shadow: 0 15px 35px var(--color-glow);
+  filter: var(--filter-img);
+  border-radius: 2px;
+  transition: transform 0.5s ease, filter 1.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 1.5s ease;
 }
 
-@media (min-width: 960px){
-  #main {
-    width: 800px;
-  }
+body.theme-night #main .cen-pi {
+  background: #111e17; /* Saturated picture board in Wong Kar-wai night */
 }
 
+/* Sacramento flourish styling */
 .world-of {
   font-family: 'Sacramento', cursive;
+  font-size: 2rem;
+  color: var(--color-accent);
+  text-align: center;
+  margin-bottom: -1rem;
+  transition: color 1.5s ease;
 }
 
+.gh-title {
+  margin-top: 0;
+}
+
+/* ==========================================================================
+   NAVIGATION
+   ========================================================================== */
+
 .nav {
-  padding: 0.5rem;
-  min-height: 4rem;
+  padding: 1rem 2rem;
+  min-height: 4.5rem;
   width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border-soft);
+  transition: border-color 1.5s ease;
 }
 
 .nav #navlinks {
-    justify-content: space-between;
+  display: flex;
+  gap: 1.5rem;
 }
 
 .nav a {
-  float: left;
-  color: black;
-  font-weight: bold;
+  color: var(--color-text-dark);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
   text-align: center;
-  padding: 14px 16px;
+  padding: 0.5rem 1rem;
   text-decoration: none;
-  font-size: 1.2em;
-  display: block;
+  font-size: 1.25rem;
+  position: relative;
+  transition: color 0.4s ease, background-color 0.4s ease;
+  border-radius: 2px;
 }
 
-.nav a.icon {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 0;
+.nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 1rem;
+  width: calc(100% - 2rem);
+  height: 1px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 1.5s ease;
+}
+
+.nav a:hover::after, .nav a#active::after {
+  transform: scaleX(1);
 }
 
 .nav a:hover {
-  background-color: black;
-  color: #e75a0b;
-  font-weight: bold;
+  background-color: var(--color-accent-dim);
+  color: var(--color-accent);
 }
 
-.sous {
-  /* position: fixed; */
-  width: 90%;
-  margin: 0 auto;
-  bottom: 0; /* Distance from the bottom */
-  left: 0;   /* Optional: Align to the left */
-  width: 100%; /* Optional: Full-width div */
-  padding: 10px; /* Optional: Padding inside the div */
+.nav a#active {
+  color: var(--color-accent);
 }
 
-.sous h2 {
-  text-align: center; /* Optional: Center-align text */
+.nav a.icon {
+  display: none;
+  color: var(--color-text-dark);
+  font-size: 1.5rem;
 }
 
-@media only screen and (min-width: 769px) {
+/* Hamburger mobile logic overrides */
+@media only screen and (max-width: 768px) {
+  .nav {
+    position: relative;
+    padding: 1.5rem;
+  }
+
   .nav #navlinks {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border-soft);
+    padding: 1rem;
+    z-index: 999;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: background-color 1.5s ease;
+  }
+
+  .nav #navlinks.active {
+    display: flex;
+  }
+
+  .nav a.icon {
     display: block;
   }
 }
 
-
-@media only screen and (max-width: 600px) {
-  #main {
-    padding: 0.5rem;
-  }
-
-  .nav {
-    display: flex;
-    padding: 2rem 2rem;
-    right: 0;
-  }
-
-  .nav #navlinks {
-      display: none;
-  }
-
-
-  .nav a.icon {
-      display: block;
-  }
-
-  article {
-      padding: 0.75rem;
-  }
-
-  article h3 {
-      font-size: 1.2rem;
-  }
-}
+/* ==========================================================================
+   ARTICLES & BLOG POSTS
+   ========================================================================== */
 
 article {
-    background-color: white;
-    border: 4px solid #21301b;
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-    transition: background-color 0.3s ease;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border-soft);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  border-radius: 2px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+body.theme-morning article {
+  background-color: #ECE7DD;
+}
+
+body.theme-night article {
+  background-color: #0A1410;
 }
 
 article:hover {
-    background-color: #2d4326;
-    color: white;
-    border-left: 4px solid #7b6953;
+  background-color: var(--color-accent-dim);
+  border-color: var(--color-accent);
+}
+
+body.theme-morning article:hover {
+  border-color: var(--color-text-dark);
+  background-color: #D5D0C3;
 }
 
 /* Article title */
 article h3 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.4rem;
-    color: black;
+  margin: 0 0 1rem 0;
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 300;
+  color: var(--color-text-dark);
+  transition: color 1.5s ease;
 }
 
 /* Date styling */
 article time {
-    display: block;
-    color: #21301b;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
+  display: block;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  transition: color 1.5s ease;
 }
 
-article {
-    cursor: pointer;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+article p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--color-text-body);
 }
 
 article a {
-  color: #e75a0b;
+  color: var(--color-accent);
+  text-decoration: underline;
+  transition: color 0.3s ease;
 }
 
-html {
-    scroll-behavior: smooth;
+article a:hover {
+  color: var(--color-text-dark);
 }
 
-::selection {
-    background-color: #21301b;
-    color: #fdfdfd;
+/* GoodReads integration styling */
+article img {
+  border: 1px solid var(--color-border-soft);
+  padding: 4px;
+  background: #FFF;
+  border-radius: 1px;
+  filter: var(--filter-img);
+  max-width: 90px;
 }
+
+/* ==========================================================================
+   PROJECTS
+   ========================================================================== */
 
 .projects {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  max-width: 900px;
+  margin: 2rem auto 0 auto;
 }
 
 .project-card {
   background: #ffffff;
-  border-radius: 8px;
-  padding: 1.5rem;
+  border-radius: 2px;
+  padding: 2.5rem;
   margin-bottom: 2rem;
-  border: 4px solid #21301b;
-  transition: background-color 0.3s ease;
+  border: 1px solid var(--color-border-soft);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.theme-morning .project-card {
+  background-color: #ECE7DD;
+}
+
+body.theme-night .project-card {
+  background-color: #0A1410;
 }
 
 .project-card:hover {
-  background-color: #2d4326;
-  color: white;
-  border-left: 4px solid #7b6953;
+  background-color: var(--color-accent-dim);
+  border-color: var(--color-accent);
 }
 
-.project-card:hover h2,
-.project-card:hover p,
-.project-card:hover ul {
-  color: white;
+body.theme-morning .project-card:hover {
+  border-color: var(--color-text-dark);
+  background-color: #D5D0C3;
 }
 
 .project-card h2 {
   margin-top: 0;
-  color: #21301b;
+  margin-bottom: 1rem;
+  text-align: left;
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 300;
+  color: var(--color-text-dark);
 }
 
 .project-card p, .project-card ul {
-  color: black;
-  line-height: 1.6;
+  color: var(--color-text-body);
+  line-height: 1.8;
+  font-size: 0.95rem;
 }
 
 .project-card ul {
-  margin-left: 1.5rem;
+  margin-left: 1.25rem;
+  padding-left: 0;
+  list-style-type: square;
 }
 
 .project-links {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 .project-button {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   padding: 0.75rem 1.5rem;
-  background: #e75a0b;
-  color: white;
+  background: var(--color-accent);
+  color: #FFF !important;
   text-decoration: none;
-  border-radius: 6px;
-  transition: background 0.2s;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.theme-morning .project-button {
+  background: var(--color-text-dark);
+}
+
+body.theme-night .project-button {
+  background: var(--color-accent);
 }
 
 .project-button:hover {
-  background: #c94d09;
-  color: white;
+  background: var(--color-text-dark);
+  transform: translateY(-2px);
+}
+
+body.theme-morning .project-button:hover {
+  background: var(--color-accent);
+}
+
+body.theme-night .project-button:hover {
+  background: #FFF;
+  color: #060F0C !important;
+  border-color: var(--color-text-dark);
 }
 
 .project-button i {
-  font-size: 1.2rem;
+  font-size: 1rem;
+}
+
+/* ==========================================================================
+   STORY / SCREENPLAY ELEMENTS
+   ========================================================================== */
+
+/* Scene slugs (INT/EXT style) */
+.scene-slug {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--color-text-dark);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+
+.scene-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 300;
+  text-align: center;
+  color: var(--color-accent);
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+/* Script character dialog boxes */
+.script-block {
+  margin: 3rem 0;
+  font-family: var(--font-mono);
+}
+
+.character-name {
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.parenthetical {
+  text-align: center;
+  font-style: italic;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-body);
+}
+
+.dialogue-text {
+  max-width: 500px;
+  margin: 0 auto 1.5rem auto;
+  text-align: justify;
+  line-height: 1.8;
+  font-size: 0.95rem;
+  color: var(--color-text-body);
+}
+
+/* Clinical Dossier Boxes */
+.dossier-box {
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  padding: 2rem;
+  margin: 3rem 0;
+  border-radius: 2px;
+  transition: all 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.dossier-title {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 1px dashed var(--color-border-soft);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  color: var(--color-text-dark);
+}
+
+.dossier-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 0;
+}
+
+.dossier-list li {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  margin-bottom: 0.75rem;
+  color: var(--color-text-body);
+}
+
+.dossier-list strong {
+  color: var(--color-text-dark);
+  font-weight: 500;
+}
+
+/* Widescreen Aspect-Ratio Container */
+.cinematic-slate {
+  position: relative;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border-soft);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.02);
+  transition: background-color 1.5s ease, border-color 1.5s ease;
+  border-radius: 2px;
+}
+
+body.theme-morning .cinematic-slate {
+  background-color: #ECE7DD;
+}
+
+body.theme-night .cinematic-slate {
+  background-color: #0A1410;
+}
+
+/* Dynamic movie subtitles overlay */
+.subtitle-caption {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  text-align: center;
+  color: var(--color-text-dark);
+  max-width: 600px;
+  margin: 2rem auto;
+  line-height: 1.6;
+  padding: 0 1rem;
+}
+
+.subtitle-text {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-style: normal;
+  display: block;
+  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   FOOTER / SOUS
+   ========================================================================== */
+
+.sous {
+  width: 100%;
+  margin: 4rem auto 0 auto;
+  padding: 2rem 0;
+  border-top: 1px dashed var(--color-border-soft);
+  text-align: center;
+  transition: border-color 1.5s ease;
+}
+
+.sous h2 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.sous img {
+  border: 1px solid var(--color-border-soft);
+  padding: 2px;
+  background: #FFF;
+  border-radius: 2px;
+  filter: var(--filter-img);
+  transition: all 0.3s ease;
+}
+
+.sous img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px var(--color-glow);
+}
+
+/* Selection aesthetics */
+::selection {
+  background-color: var(--color-accent);
+  color: #FFF;
 }

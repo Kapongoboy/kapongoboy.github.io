@@ -4,89 +4,132 @@
     <meta charset="UTF-8">
     <link rel="icon" href="./assets/genham_crop.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog, Plamedi Luis</title>
+    <title>Plamedi Luis — Act III: IS THIS ALL THAT I AM</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Sacramento&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="styles/style.css" rel="stylesheet" type="text/css" media="all">
   </head>
   <body>
-      <div class="nav">
-        <a href="index.html">
-        <img class="genham" src="./assets/genham_crop.png">
-        </a>
-          <div id="navlinks">
-            <a id="active" href="index.html">Home</a>
-            <a id="blog" href="blog.html">Blog</a>
-            <a id="about" href="about.html">About</a>
-            <a id="showcase" href="showcase.html">Showcase</a>
-          </div>
-          <a href="javascript:void(0);" class="icon" onclick="loadBurger()">
-              <i class="fa fa-bars"></i>
-          </a>
+    <!-- GPU-Accelerated Analog SVG Film Grain Overlay -->
+    <svg class="film-grain-svg" style="display:none;">
+      <filter id="film-grain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="noise" />
+        <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.08 0" />
+      </filter>
+    </svg>
+    <div class="film-grain-overlay"></div>
+
+    <div class="nav">
+      <a href="index.html">
+        <img class="genham" src="./assets/genham_crop.png" alt="logo">
+      </a>
+      <div id="navlinks">
+        <a href="index.html">ME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="showcase.html">SHOWCASE</a>
+        <a id="active" href="blog.html">BLOG</a>
       </div>
-    <div id="main">
-      <div>
-        <h1>I want everything and I want to want less</h1>
-      </div>
-      <p>thoughts, or fragments of thoughts. Nothing is particularly intended, but I am willing to listen.</p>
-
-      <article>
-        <h3>heart the lover</h3>
-        <time>20-05-2026</time>
-        <p>
-          <a href="https://www.goodreads.com/book/show/228110489-heart-the-lover" style="float: left; padding-right: 20px"><img border="0" alt="Heart the Lover" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1745508457l/228110489._SX98_.jpg" /></a><a href="https://www.goodreads.com/book/show/228110489-heart-the-lover">Heart the Lover</a> by <a href="https://www.goodreads.com/author/show/117786.Lily_King">Lily King</a><br/>
-          My rating: <a href="https://www.goodreads.com/review/show/8616243199">4 of 5 stars</a><br /><br />
-          Sometimes it felt overwhelming, just how long life can take. You're 15, then you're almost 30, but even then it feels like you've been here too long, but not long enough. The longer I'm here, the more mistakes I pile up, god don't let them follow me.
-          <br/><br/>
-          <a href="https://www.goodreads.com/review/list/37300850-plamedi-luis">View all my reviews</a>
-        </p>
-      </article>
-
-      <article>
-        <h3>the agony of eros</h3>
-        <time>14-02-2025</time>
-        <p>
-          <a href="https://www.goodreads.com/book/show/34848070-the-agony-of-eros" style="float: left; padding-right: 20px"><img border="0" alt="The Agony of Eros" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1492050857l/34848070._SX98_.jpg" /></a><a href="https://www.goodreads.com/book/show/34848070-the-agony-of-eros">The Agony of Eros</a> by <a href="https://www.goodreads.com/author/show/970747.Byung_Chul_Han">Byung-Chul Han</a><br/>
-          My rating: <a href="https://www.goodreads.com/review/show/7319771561">3 of 5 stars</a><br /><br />
-          Low-key, reads more like an extract from a dissertation than something meant for everyone to read and explore the ideas presented.<br /><br />I enjoyed the central theme of experiencing Eros (eroticism with love? Love to the point of death? Transgression in love?) through the negative. The idea of abandoning the self in pursuit of the Other has always been attractive to me, but there is an underlying danger. For the endeavour to succeed, requires mutual self-destruction, without it, what are you left with but violence?<br />
-          <br/><br/>
-          <a href="https://www.goodreads.com/review/list/37300850-plamedi-luis">View all my reviews</a>
-        </p>
-      </article>
-
-      <article>
-        <h3>the writing life</h3>
-        <time>29-12-2024</time>
-        <p>
-          <a href="https://www.goodreads.com/book/show/12530.The_Writing_Life" style="float: left; padding-right: 20px"><img border="0" alt="The Writing Life" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1418306701l/12530._SX98_.jpg" /></a><a href="https://www.goodreads.com/book/show/12530.The_Writing_Life">The Writing Life</a> by <a href="https://www.goodreads.com/author/show/5209.Annie_Dillard">Annie Dillard</a><br/>
-          My rating: <a href="https://www.goodreads.com/review/show/7132380270">3 of 5 stars</a><br /><br />
-          At first, I wasn't really on board with the thesis of the book. I started reading it while waiting for my sister to get her prescriptions from the optometrist at a government hospital. And, sitting there amidst all the need, the descriptions of writing as this harrowing and dangerous endeavor felt ridiculous if not insensitive.<br /><br />Now far away from the hospital, finishing it on a Sunday morning with what was probably the capstone anecdote, of the geology professor stunt pilot, David Rahm, I see the urgency. The title of the book is the writing life. And though the instrument of inspection is writing, the book is about life itself.
-          <br/><br/>
-          <a href="https://www.goodreads.com/review/list/37300850-plamedi-luis">View all my reviews</a>
-        </p>
-      </article>
-
-      <article>
-        <h3>Its done</h3>
-        <time>27-11-2024</time>
-        <p>
-          C'est fini
-        </p>
-      </article>
-
-      <article>
-        <h3>Infinite astral markings</h3>
-        <time>26-11-2024</time>
-        <p>
-          It probably isn't good for you, if your heart always feels like it's about to explode.
-        </p>
-      </article>
-
+      <a href="javascript:void(0);" class="icon">
+        <i class="fa fa-bars"></i>
+      </a>
     </div>
+
+    <div id="main">
+      <div class="cinematic-slate" style="padding: 4rem 2rem;">
+        <div class="scene-slug">EXT. LIFE — WE OUSSIDE OR?</div>
+        <h2 class="scene-title">SCENE 27: I WANT EVERYTHING AND I WANT TO WANT LESS.</h2>
+
+        <p style="text-align: center; font-style: italic; margin-bottom: 3rem; font-family: var(--font-serif); font-size: 1.2rem;">
+          "thoughts, or fragments of thoughts. Nothing is particularly intended, but I am willing to listen."
+        </p>
+
+        <!-- Focus rack sibling blur wrapper -->
+        <div class="focus-pull-container">
+
+          <!-- Review 1: Heart the Lover -->
+          <article onclick="window.open('https://www.goodreads.com/review/show/8616243199', '_blank')">
+            <time>20-05-2026 — 4 OF 5 STARS</time>
+            <h3>HEART THE LOVER by Lily King</h3>
+            
+            <a href="https://www.goodreads.com/book/show/228110489-heart-the-lover" target="_blank" style="float: left; padding-right: 20px; border:none;">
+              <img alt="Heart the Lover" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1745508457l/228110489._SX98_.jpg" />
+            </a>
+
+            <div class="character-name" style="text-align:left; margin-left: 110px;">ME</div>
+            <p style="margin-left: 110px;">
+              Sometimes it felt overwhelming, just how long life can take. You're 15, then you're almost 30, but even then it feels like you've been here too long, but not long enough. The longer I'm here, the more mistakes I pile up, god don't let them catch me.
+            </p>
+            <div style="clear: both; padding-top: 1.5rem; font-size: 0.85rem;">
+              <a href="https://www.goodreads.com/review/list/37300850-plamedi-luis" target="_blank">View all my reviews on Goodreads</a>
+            </div>
+          </article>
+
+          <!-- Review 2: The Agony of Eros -->
+          <article onclick="window.open('https://www.goodreads.com/review/show/7319771561', '_blank')">
+            <time>14-02-2025 — 3 OF 5 STARS</time>
+            <h3>THE AGONY OF EROS by Byung-Chul Han</h3>
+            
+            <a href="https://www.goodreads.com/book/show/34848070-the-agony-of-eros" target="_blank" style="float: left; padding-right: 20px; border:none;">
+              <img alt="The Agony of Eros" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1492050857l/34848070._SX98_.jpg" />
+            </a>
+
+            <div class="character-name" style="text-align:left; margin-left: 110px;">ME</div>
+            <p style="margin-left: 110px;">
+              Low-key, reads more like an extract from a dissertation than something meant for everyone to read and explore the ideas presented.
+              <br><br>
+              I enjoyed the central theme of experiencing Eros through the negative. The idea of abandoning the self in pursuit of the Other has always been attractive to me, but there is an underlying danger. For the endeavour to succeed, requires mutual self-destruction, without it, what are you left with but violence?
+            </p>
+            <div style="clear: both; padding-top: 1.5rem; font-size: 0.85rem;">
+              <a href="https://www.goodreads.com/review/list/37300850-plamedi-luis" target="_blank">View all my reviews on Goodreads</a>
+            </div>
+          </article>
+
+          <!-- Review 3: The Writing Life -->
+          <article onclick="window.open('https://www.goodreads.com/review/show/7132380270', '_blank')">
+            <time>29-12-2024 — 3 OF 5 STARS</time>
+            <h3>THE WRITING LIFE by Annie Dillard</h3>
+            
+            <a href="https://www.goodreads.com/book/show/12530.The_Writing_Life" target="_blank" style="float: left; padding-right: 20px; border:none;">
+              <img alt="The Writing Life" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1418306701l/12530._SX98_.jpg" />
+            </a>
+
+            <div class="character-name" style="text-align:left; margin-left: 110px;">ME</div>
+            <p style="margin-left: 110px;">
+              At first, I wasn't really on board with the thesis of the book. I started reading it while waiting for my sister to get her prescriptions from the optometrist at a government hospital. And, sitting there amidst all the need, the descriptions of writing as this harrowing and dangerous endeavor felt ridiculous if not insensitive.
+              <br><br>
+              Now far away from the hospital, finishing it on a Sunday morning with what was probably the capstone anecdote, of the geology professor stunt pilot, David Rahm, I see the urgency. The title of the book is the writing life. And though the instrument of inspection is writing, the book is about life itself.
+            </p>
+            <div style="clear: both; padding-top: 1.5rem; font-size: 0.85rem;">
+              <a href="https://www.goodreads.com/review/list/37300850-plamedi-luis" target="_blank">View all my reviews on Goodreads</a>
+            </div>
+          </article>
+
+          <!-- Log 1: Its done -->
+          <article>
+            <time>27-11-2024</time>
+            <h3>EXT. I DONT REMEMBER WHERE — NIGHT</h3>
+            <div class="parenthetical" style="text-align:left;">Its done:</div>
+            <p>
+              “C'est fini”
+            </p>
+          </article>
+
+          <!-- Log 2: Infinite astral markings -->
+          <article>
+            <time>26-11-2024</time>
+            <h3>INT. IN YOUR WALLS — DAY</h3>
+            <div class="parenthetical" style="text-align:left;">infinite astral markings:</div>
+            <p>
+              “It probably isn't good for you, if your heart always feels like it's about to explode.”
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </div>
+
     <script src="src/main.js"></script>
   </body>
 </html>

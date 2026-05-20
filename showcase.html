@@ -4,92 +4,114 @@
     <meta charset="UTF-8">
     <link rel="icon" href="./assets/genham_crop.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Showcase, Plamedi Luis</title>
+    <title>Plamedi Luis — Act II: WHAT I'VE WROUGHT</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Sacramento&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="styles/style.css" rel="stylesheet" type="text/css" media="all">
   </head>
   <body>
-      <div class="nav">
-        <a href="index.html">
-        <img class="genham" src="./assets/genham_crop.png">
-        </a>
-          <div id="navlinks">
-            <a id="active" href="index.html">Home</a>
-            <a id="blog" href="blog.html">Blog</a>
-            <a id="about" href="about.html">About</a>
-            <a id="showcase" href="showcase.html">Showcase</a>
-          </div>
-          <a href="javascript:void(0);" class="icon" onclick="loadBurger()">
-              <i class="fa fa-bars"></i>
-          </a>
+    <!-- GPU-Accelerated Analog SVG Film Grain Overlay -->
+    <svg class="film-grain-svg" style="display:none;">
+      <filter id="film-grain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="noise" />
+        <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.08 0" />
+      </filter>
+    </svg>
+    <div class="film-grain-overlay"></div>
+
+    <div class="nav">
+      <a href="index.html">
+        <img class="genham" src="./assets/genham_crop.png" alt="logo">
+      </a>
+      <div id="navlinks">
+        <a href="index.html">ME</a>
+        <a href="about.html">ABOUT</a>
+        <a id="active" href="showcase.html">SHOWCASE</a>
+        <a href="blog.html">BLOG</a>
       </div>
+      <a href="javascript:void(0);" class="icon">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+
     <div id="main">
-      <div>
-        <h1>To be gorgeous, you must first be seen</h1>
-      </div>
-      
-      <p>Bits and bobs that I've worked on and am particularly proud of.</p>
+      <div class="cinematic-slate" style="padding: 4rem 2rem;">
+        <div class="scene-slug">INT. A ROOM — PROBABLY GITHUB</div>
+        <h2 class="scene-title">SCENE 24: To be gorgeous, you must first be seen</h2>
 
-      <div class="projects">
-        <div class="project-card">
-          <h2>Li8Z - CHIP-8 Emulator</h2>
-          <p>A CHIP-8 emulator written in the Zig programming language. Features include:</p>
-          <ul>
-            <li>Full CHIP-8 instruction set implementation</li>
-            <li>Support for both desktop and web platforms</li>
-            <li>Audio and keyboard input support</li>
-            <li>Built with Zig, Raylib, and WebAssembly</li>
-          </ul>
-          <div class="project-links">
-            <a href="https://github.com/Kapongoboy/li8z" target="_blank" class="project-button">
-              <i class="fa fa-github"></i> View on GitHub
-            </a>
-          </div>
-        </div>
-        <div class="project-card">
-          <h2>Brainoof - Esoteric Language Interpreter</h2>
-          <p>An interpreter for an esoteric programming language, written in pure Rust, inspired by Krzysztof Gabis's C implementation. Features include:</p>
-          <ul>
-            <li>Pure Rust implementation</li>
-            <li>Capable of running complex programs like bottles.bf</li>
-            <li>Includes a Python implementation as bonus</li>
-            <li>Simple and efficient command-line interface</li>
-          </ul>
-          <div class="project-links">
-            <a href="https://github.com/Kapongoboy/mindsuck" target="_blank" class="project-button">
-              <i class="fa fa-github"></i> View on GitHub
-            </a>
-          </div>
-        </div>
-        <div class="project-card">
-          <h2>Curriculum Vitae</h2>
-          <p>My professional background and experience in software development and engineering.</p>
-          <ul>
-            <li>Technical skills and programming languages</li>
-            <li>Work experience and projects</li>
-            <li>Education and certifications</li>
-            <li>Professional achievements</li>
-          </ul>
-          <div class="project-links">
-            <a href="assets/cv.pdf" target="_blank" class="project-button">
-              <i class="fa fa-file-pdf-o"></i> View CV
-            </a>
-          </div>
-        </div>
-      </div>
+        <p style="text-align: center; font-style: italic; margin-bottom: 3rem; font-family: var(--font-serif); font-size: 1.2rem;">
+          “Bits and bobs that I've worked on and am particularly proud of”
+        </p>
 
-      <div class="sous">
-        <h2> Mon Amie </h2>
-        <a href="https://plainoldcheese.neocities.org/" target="_blank">
-          <img src="https://mitzyrie.neocities.org/index/buttons/poc.gif" alt="plainoldcheese's site">
-        </a>
+        <!-- Focus rack sibling blur wrapper -->
+        <div class="projects focus-pull-container">
+          
+          <div class="project-card">
+            <h2>Li8Z — An Archaeology of 8-Bit Memory</h2>
+            <p>
+              A machine built to mimic a machine that never truly existed. Written in Zig, because memory should be managed by hand, like old photographs.
+            </p>
+            <ul>
+              <li><strong>THE PROTOCOL:</strong> Reconstructed the entire CHIP-8 instruction set from yellowed documentation.</li>
+              <li><strong>THE MEDIATION:</strong> Compiles to WebAssembly, allowing modern web browsers to pretend they are forty years younger.</li>
+              <li><strong>THE SENSES:</strong> Emits low-frequency audio and accepts keyboard input, replicating the sterile joy of early computing.</li>
+              <li>Built with Zig, Raylib, and WebAssembly.</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://github.com/Kapongoboy/li8z" target="_blank" class="project-button">
+                <i class="fa fa-github"></i> View on GitHub
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h2>Brainoof — The Translation of Useless Systems</h2>
+            <p>
+              An interpreter for an esoteric programming language, written in Rust. It does not calculate taxes or manage databases. It exists only to prove that a machine can be driven to madness if given the right symbols.
+            </p>
+            <ul>
+              <li><strong>THE COMPLIANCE:</strong> A pure Rust engine capable of running loops of complex, incomprehensible instructions like "bottles.bf".</li>
+              <li><strong>THE ANCESTRY:</strong> Inspired by Krzysztof Gabis’s C interpreter, but rebuilt with the nervous caution of Rust.</li>
+              <li><strong>THE BONUS:</strong> A Python implementation is included, in case the Rust compiler becomes too hostile.</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://github.com/Kapongoboy/mindsuck" target="_blank" class="project-button">
+                <i class="fa fa-github"></i> View on GitHub
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h2>Curriculum Vitae — The Bureaucratic Spec Sheet</h2>
+            <p>
+              A list of dates and acronyms proving that I am capable of sitting in an office for eight hours without causing a disturbance. It contains evidence of education, engineering credentials, and lists of programming languages I have coerced into working.
+            </p>
+            <ul>
+              <li>Technical skills and engineering systems.</li>
+              <li>Employment records and project histories.</li>
+              <li>Accreditations, degrees, and academic milestones.</li>
+              <li>Documented professional achievements.</li>
+            </ul>
+            <div class="project-links">
+              <a href="assets/cv.pdf" target="_blank" class="project-button">
+                <i class="fa fa-file-pdf-o"></i> View CV
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="sous">
+          <h2>Mon Amie</h2>
+          <a href="https://plainoldcheese.neocities.org/" target="_blank">
+            <img src="https://mitzyrie.neocities.org/index/buttons/poc.gif" alt="plainoldcheese's site">
+          </a>
+        </div>
       </div>
     </div>
+
     <script src="src/main.js"></script>
   </body>
 </html>
