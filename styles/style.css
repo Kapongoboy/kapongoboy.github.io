@@ -195,6 +195,7 @@ body::after { bottom: 0; }
    ========================================================================== */
 
 #main {
+  width: 100%; /* body is a flex column, so without this #main shrink-wraps its content and can outgrow the screen */
   max-width: 900px;
   margin: 0 auto;
   padding: 4rem 2rem;
@@ -472,6 +473,59 @@ article img {
   border-radius: 1px;
   filter: var(--filter-img);
   max-width: 90px;
+}
+
+/* Review layout: poster on the left, text in a hanging column beside it */
+.review-cover {
+  float: left;
+  padding-right: 20px;
+  border: none;
+}
+
+.review-indent {
+  margin-left: 110px;
+}
+
+.character-name.review-indent {
+  text-align: left;
+}
+
+.review-footer {
+  clear: both;
+  padding-top: 1.5rem;
+  font-size: 0.85rem;
+}
+
+/* Phones: less nested padding, and let the text wrap around the poster */
+@media only screen and (max-width: 600px) {
+  #main {
+    padding: 2rem 0.75rem;
+  }
+
+  .cinematic-slate {
+    padding: 2.5rem 1rem !important; /* overrides the inline padding on each page */
+  }
+
+  .scene-title {
+    font-size: 1.8rem;
+  }
+
+  article {
+    padding: 1.5rem 1.25rem;
+  }
+
+  article h3 {
+    font-size: 1.4rem;
+  }
+
+  .review-cover {
+    padding-right: 14px;
+    padding-bottom: 6px;
+  }
+
+  .review-indent {
+    margin-left: 0;
+  }
 }
 
 /* ==========================================================================
